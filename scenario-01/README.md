@@ -33,6 +33,8 @@ az group create -n $rg -l northeurope
 az deployment group create --name Scenario01 --resource-group $rg --template-file $file --parameters webshopName=$webshopName
 ```
 
+The generated web app url: https://webshop-agw-demo-01.azurewebsites.net
+
 ## Deploy application
 
 ```powershell

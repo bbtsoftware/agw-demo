@@ -16,7 +16,6 @@ $password = Get-RandomCharacters -length 5 -characters 'abcdefghiklmnoprstuvwxyz
 $password += Get-RandomCharacters -length 2 -characters 'ABCDEFGHKLMNOPRSTUVWXYZ'
 $password += Get-RandomCharacters -length 3 -characters '1234567890'
 $password += Get-RandomCharacters -length 2 -characters '@#*+'
-
 #not allowed character " ' ` / \ < % ~ | $ & !
 
 $password = Scramble-String $password
