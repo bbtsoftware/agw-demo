@@ -18,3 +18,19 @@ A simple setup.
 See [scenario-01](./scenario-01/README.md) for more information.
 
 ![overview scenario 01](scenario-01/scenario-01.svg)
+
+## Scenario 02
+
+A setup in which the application gateway shows it's WAF capabilities.
+
+See [scenario-02](./scenario-02/README.md) for more information.
+
+![overview scenario 02](scenario-02/scenario-02.svg)
+
+## Scenario 03
+
+A load balancing setup with virtual machines.
+
+See [scenario-03](./scenario-03/README.md) for more information.
+
+![overview scenario 03](scenario-03/scenario-03.svg)
