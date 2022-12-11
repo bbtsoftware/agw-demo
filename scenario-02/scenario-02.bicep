@@ -30,6 +30,9 @@ resource sqlServer 'Microsoft.Sql/servers@2022-02-01-preview' = {
   }
 }
 
+// -------------------------------------------------
+// CAUTION!! This setting is for demo purposes only
+// -------------------------------------------------
 // allow all connections from azure to the database server
 resource sqlAllowAllWindowsAzureIps 'Microsoft.Sql/servers/firewallRules@2020-11-01-preview' = {
   name: 'AllowAllWindowsAzureIps'

@@ -34,3 +34,11 @@ A load balancing setup with virtual machines.
 See [scenario-03](./scenario-03/README.md) for more information.
 
 ![overview scenario 03](scenario-03/scenario-03.svg)
+
+## Scenario 04
+
+A path based routing setup.
+
+See [scenario-04](./scenario-04/README.md) for more information.
+
+![overview scenario 04](scenario-04/scenario-04.svg)

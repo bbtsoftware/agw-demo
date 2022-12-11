@@ -3,7 +3,7 @@
 #
 # source
 # https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/application-gateway-2vms-iis-ssl
-param ($frontendDnsName='frontend.frontend')
+param ($frontendDnsName='frontend.frontend',$certOutputRelativePath='cert')
 
 # generate password script
 # ------------------------
@@ -32,7 +32,9 @@ $password = Scramble-String $password
 
 $localPath = Get-Location
 # the target directory
-$certDir = Join-Path -Path $localPath -ChildPath "cert"
+$certDir = Join-Path -Path $localPath -ChildPath $certOutputRelativePath
+
+New-Item -ItemType Directory -Force -Path $certDir
 
 $password > "$certDir/cert_password.txt"
 $pw = $password
