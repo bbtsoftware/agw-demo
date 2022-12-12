@@ -17,7 +17,7 @@ A simple setup.
 
 See [scenario-01](./scenario-01/README.md) for more information.
 
-![overview scenario 01](scenario-01/scenario-01.svg)
+![overview scenario 01](scenario-01/scenario-01.png)
 
 ## Scenario 02
 
@@ -25,7 +25,7 @@ A setup in which the application gateway shows it's WAF capabilities.
 
 See [scenario-02](./scenario-02/README.md) for more information.
 
-![overview scenario 02](scenario-02/scenario-02.svg)
+![overview scenario 02](scenario-02/scenario-02.png)
 
 ## Scenario 03
 
@@ -33,7 +33,7 @@ A load balancing setup with virtual machines.
 
 See [scenario-03](./scenario-03/README.md) for more information.
 
-![overview scenario 03](scenario-03/scenario-03.svg)
+![overview scenario 03](scenario-03/scenario-03.png)
 
 ## Scenario 04
 
@@ -41,4 +41,4 @@ A path based routing setup.
 
 See [scenario-04](./scenario-04/README.md) for more information.
 
-![overview scenario 04](scenario-04/scenario-04.svg)
+![overview scenario 04](scenario-04/scenario-04.png)

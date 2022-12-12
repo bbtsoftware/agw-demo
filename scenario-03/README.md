@@ -1,6 +1,6 @@
 # Scenario 03 - Instructions
 
-![Overview](./scenario-03.svg)
+![Overview](./scenario-03.png)
 
 ## Description
 
