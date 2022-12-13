@@ -1,7 +1,7 @@
 // must be unique within azure
-param webshopName string = 'webshop-agw-demo-04'
-param webappName string = 'app-agw-demo-04'
-param sqlServerName string = 'sql-agw-demo-04'
+param webshopName string = 'webshop-agw-demo-05'
+param webappName string = 'app-agw-demo-05'
+param sqlServerName string = 'sql-agw-demo-05'
 
 param location string = resourceGroup().location
 
@@ -46,7 +46,7 @@ resource sqlAllowAllWindowsAzureIps 'Microsoft.Sql/servers/firewallRules@2020-11
 
 resource catalogDb 'Microsoft.Sql/servers/databases@2022-02-01-preview' = {
   parent: sqlServer
-  name: 'sqldb-agw-demo-04-catalogdb'
+  name: 'sqldb-agw-demo-05-catalogdb'
   location: location
   properties: {
     collation: 'SQL_Latin1_General_CP1_CI_AS'
@@ -57,7 +57,7 @@ resource catalogDb 'Microsoft.Sql/servers/databases@2022-02-01-preview' = {
 
 resource identityDb 'Microsoft.Sql/servers/databases@2022-02-01-preview' = {
   parent: sqlServer
-  name: 'sqldb-agw-demo-04-identity'
+  name: 'sqldb-agw-demo-05-identity'
   location: location
   properties: {
     collation: 'SQL_Latin1_General_CP1_CI_AS'
@@ -70,13 +70,13 @@ resource identityDb 'Microsoft.Sql/servers/databases@2022-02-01-preview' = {
 // Public IP
 //
 resource publicIp 'Microsoft.Network/publicIPAddresses@2022-01-01' = {
-  name: 'pip-agw-demo-04'
+  name: 'pip-agw-demo-05'
   location: location
   properties: {
     publicIPAddressVersion: 'IPv4'
     publicIPAllocationMethod: 'Static'
     dnsSettings: {
-      domainNameLabel: 'agw-demo-04'
+      domainNameLabel: 'agw-demo-05'
     }
   }
   sku: {
@@ -89,7 +89,7 @@ resource publicIp 'Microsoft.Network/publicIPAddresses@2022-01-01' = {
 // VNET for AGW
 //
 resource vnet 'Microsoft.Network/virtualNetworks@2021-08-01' = {
-  name: 'vnet-agw-demo-04'
+  name: 'vnet-agw-demo-05'
   location: location
   properties: {
     addressSpace: {
@@ -99,7 +99,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2021-08-01' = {
     }
     subnets: [
       {
-        name: 'vnet-agw-demo-04-subnet'
+        name: 'vnet-agw-demo-05-subnet'
         properties: {
           addressPrefix: '10.0.0.0/24'
           // required for the AGW to access the web app if access restriction is enabled
@@ -118,7 +118,7 @@ var agwSubnetId = vnet.properties.subnets[0].id
 // WEB APPS
 //
 resource appServicePlan 'Microsoft.Web/serverFarms@2022-03-01' = {
-  name: 'plan-demo-04'
+  name: 'plan-demo-05'
   location: location
   sku: {
     tier: 'Free'
@@ -217,11 +217,11 @@ resource aspWebApp 'Microsoft.Web/sites@2022-03-01' = {
 //
 // AGW
 //
-// webshop-agw-demo-04.azurewebsites.net
+// webshop-agw-demo-05.azurewebsites.net
 var webShopHostname = webShopApp.properties.defaultHostName
 var webAppHostname = aspWebApp.properties.defaultHostName
 
-var agwName = 'agw-demo-04'
+var agwName = 'agw-demo-05'
 resource agw 'Microsoft.Network/applicationGateways@2020-11-01' = {
   name: agwName
   location: location
@@ -322,6 +322,7 @@ resource agw 'Microsoft.Network/applicationGateways@2020-11-01' = {
         port: 443
         protocol: 'Https'
         pickHostNameFromBackendAddress: true
+        path: '/'
       }
     }]
     redirectConfigurations: [{
