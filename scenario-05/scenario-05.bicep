@@ -3,6 +3,9 @@ param webshopName string = 'webshop-agw-demo-05'
 param webappName string = 'app-agw-demo-05'
 param sqlServerName string = 'sql-agw-demo-05'
 
+// additional parameter
+param agwName string = 'agw-demo-05'
+param lawName string = 'law-agw-demo-05'
 param location string = resourceGroup().location
 
 // source: https://rakesh-suryawanshi.medium.com/generate-random-password-in-azure-bicep-template-3411aba22fff
@@ -84,6 +87,7 @@ resource publicIp 'Microsoft.Network/publicIPAddresses@2022-01-01' = {
     tier: 'Regional'
   }
 }
+
 
 //
 // VNET for AGW
@@ -214,6 +218,7 @@ resource aspWebApp 'Microsoft.Web/sites@2022-03-01' = {
   }
 }
 
+
 //
 // AGW
 //
@@ -221,7 +226,6 @@ resource aspWebApp 'Microsoft.Web/sites@2022-03-01' = {
 var webShopHostname = webShopApp.properties.defaultHostName
 var webAppHostname = aspWebApp.properties.defaultHostName
 
-var agwName = 'agw-demo-05'
 resource agw 'Microsoft.Network/applicationGateways@2020-11-01' = {
   name: agwName
   location: location
@@ -403,6 +407,31 @@ resource agw 'Microsoft.Network/applicationGateways@2020-11-01' = {
         }
       }
     ]
+    rewriteRuleSets: [{
+      name: 'default_rewrite_set'
+      properties: {
+        rewriteRules: [{
+          ruleSequence: 100
+          name: 'cleanup_response_headers_rule'
+          actionSet: {
+            responseHeaderConfigurations: [
+              {
+                headerName: 'Server'
+              }
+              {
+                headerName: 'X-Powered-By'
+              }
+              {
+                headerName: 'X-AspNetMvc-Version'
+              }
+              {
+                headerName: 'X-AspNet-Version'
+              }
+            ]
+          }
+        }]
+      }
+    }]
     webApplicationFirewallConfiguration: {
       enabled: true
       firewallMode: 'Prevention'
@@ -410,6 +439,15 @@ resource agw 'Microsoft.Network/applicationGateways@2020-11-01' = {
       ruleSetVersion: '3.0'
     }
   }
+}
+
+
+//
+// Log Analytics Workspace
+//
+resource law 'Microsoft.OperationalInsights/workspaces@2021-06-01' = {
+  name: lawName
+  location: location
 }
 
 output webShopHostname string = webShopHostname
