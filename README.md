@@ -42,3 +42,11 @@ A path based routing setup.
 See [scenario-04](./scenario-04/README.md) for more information.
 
 ![overview scenario 04](scenario-04/scenario-04.png)
+
+## Scenario 05
+
+A complete setup as reference for production usage.
+
+See [scenario-05](./scenario-05/README.md) for more information.
+
+![overview scenario 05](scenario-05/scenario-05.png)

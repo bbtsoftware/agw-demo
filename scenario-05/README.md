@@ -68,8 +68,7 @@ It is recommended to recreate the certificates for a new setup.
 > NOTE: This command requires elevated privileges!
 
 ```powershell
-..\scripts\generate-cert.ps1 -frontendDnsName agw-demo-05-app.northeurope.cloudapp.azure.com -certOutputRelativePath cert/app
-..\scripts\generate-cert.ps1 -frontendDnsName agw-demo-05-shop.northeurope.cloudapp.azure.com -certOutputRelativePath cert/shop
+..\scripts\generate-cert.ps1 -frontendDnsName agw-demo-05-app.northeurope.cloudapp.azure.com
 ```
 
 ## Setup services
