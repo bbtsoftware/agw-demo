@@ -82,7 +82,7 @@ $webappName = "app-agw-demo-05"
 $logName = "law-agw-demo-05"
 
 az group create -n $rg -l northeurope
-az deployment group create --name Scenario05 --resource-group $rg --template-file $file --parameters agwName=$agwN$agwame webshopName=$webshopName webappName=$webappName log=$logName
+az deployment group create --name Scenario05 --resource-group $rg --template-file $file --parameters agwName=$agwName webshopName=$webshopName webappName=$webappName lawName=$logName
 
 # setting up the log settings
 $agwId = az network application-gateway show --query 'id' --name $agwName --resource-group $rg

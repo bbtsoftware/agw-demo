@@ -51,10 +51,17 @@ resource catalogDb 'Microsoft.Sql/servers/databases@2022-02-01-preview' = {
   parent: sqlServer
   name: 'sqldb-agw-demo-05-catalogdb'
   location: location
+  sku: {
+    name: 'Basic'
+    tier: 'Basic'
+    capacity: 5
+  }
   properties: {
     collation: 'SQL_Latin1_General_CP1_CI_AS'
-    maxSizeBytes: 268435456000
+    maxSizeBytes: 2147483648
     catalogCollation: 'SQL_Latin1_General_CP1_CI_AS'
+    isLedgerOn: false
+    zoneRedundant: false
   }
 }
 
@@ -62,10 +69,17 @@ resource identityDb 'Microsoft.Sql/servers/databases@2022-02-01-preview' = {
   parent: sqlServer
   name: 'sqldb-agw-demo-05-identity'
   location: location
+  sku: {
+    name: 'Basic'
+    tier: 'Basic'
+    capacity: 5
+  }
   properties: {
     collation: 'SQL_Latin1_General_CP1_CI_AS'
-    maxSizeBytes: 268435456000
+    maxSizeBytes: 2147483648
     catalogCollation: 'SQL_Latin1_General_CP1_CI_AS'
+    isLedgerOn: false
+    zoneRedundant: false
   }
 }
 
@@ -378,6 +392,9 @@ resource agw 'Microsoft.Network/applicationGateways@2020-11-01' = {
           defaultBackendHttpSettings: {
             id: resourceId('Microsoft.Network/applicationGateways/backendHttpSettingsCollection', agwName, 'https_backendsettings')
           }
+          defaultRewriteRuleSet: {
+            id: resourceId('Microsoft.Network/applicationGateways/rewriteRuleSets', agwName, 'default_rewrite_set')
+          }
           pathRules: [
             {
               name: 'shopPath'
@@ -432,11 +449,15 @@ resource agw 'Microsoft.Network/applicationGateways@2020-11-01' = {
         }]
       }
     }]
+    sslPolicy: {
+      policyType: 'Predefined'
+      policyName: 'AppGwSslPolicy20220101'
+    }
     webApplicationFirewallConfiguration: {
       enabled: true
       firewallMode: 'Prevention'
       ruleSetType: 'OWASP'
-      ruleSetVersion: '3.0'
+      ruleSetVersion: '3.2'
     }
   }
 }

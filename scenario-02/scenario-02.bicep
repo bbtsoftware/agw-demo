@@ -47,10 +47,17 @@ resource catalogDb 'Microsoft.Sql/servers/databases@2022-02-01-preview' = {
   parent: sqlServer
   name: 'sqldb-agw-demo-02-catalogdb'
   location: location
+  sku: {
+    name: 'Basic'
+    tier: 'Basic'
+    capacity: 5
+  }
   properties: {
     collation: 'SQL_Latin1_General_CP1_CI_AS'
-    maxSizeBytes: 268435456000
+    maxSizeBytes: 2147483648
     catalogCollation: 'SQL_Latin1_General_CP1_CI_AS'
+    isLedgerOn: false
+    zoneRedundant: false
   }
 }
 
@@ -58,10 +65,17 @@ resource identityDb 'Microsoft.Sql/servers/databases@2022-02-01-preview' = {
   parent: sqlServer
   name: 'sqldb-agw-demo-02-identity'
   location: location
+  sku: {
+    name: 'Basic'
+    tier: 'Basic'
+    capacity: 5
+  }
   properties: {
     collation: 'SQL_Latin1_General_CP1_CI_AS'
-    maxSizeBytes: 268435456000
+    maxSizeBytes: 2147483648
     catalogCollation: 'SQL_Latin1_General_CP1_CI_AS'
+    isLedgerOn: false
+    zoneRedundant: false
   }
 }
 
