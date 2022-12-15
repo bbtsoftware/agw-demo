@@ -5,6 +5,13 @@ This project contains some deployment scenarios as demonstration on how
 an Azure Application Gateway can enhance your web deployment in the
 Azure Cloud.
 
+![Front](./doc/front.jpg)
+
+This demo project is part of the presentation: **Secure in the Cloud with the AGW** (
+[PDF](./doc/Secure_in_the_Cloud_with_the_AGW.pdf)
+| [PowerPoint](./doc/Secure_in_the_Cloud_with_the_AGW.pptx)
+)
+
 ## Disclaimer
 
 The web applications used in this project where taken
