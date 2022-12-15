@@ -12,3 +12,7 @@ az deployment group create --name Scenario04 --resource-group $rg --template-fil
 
 az webapp deploy --resource-group $rg --name $webshopName --src-path '../.deployables/eShopOnWeb.zip' --type zip
 az webapp deploy --resource-group $rg --name $webappName --src-path '../.deployables/AspNetCoreApp.zip' --type zip
+
+# for demo purposes
+#az webapp deploy --resource-group $rg --name "$($webshopName)-plain" --src-path '../.deployables/eShopOnWeb.zip' --type zip
+#az webapp deploy --resource-group $rg --name "$($webappName)-plain" --src-path '../.deployables/AspNetCoreApp.zip' --type zip

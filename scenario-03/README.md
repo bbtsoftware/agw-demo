@@ -36,6 +36,7 @@ $rg = "agw-demo-03-rg"
 $file = "scenario-03.bicep"
 
 az group create -n $rg -l northeurope
+# In case of `A compute virtual machine could not be found` error, repeat the command execution
 az deployment group create --name Scenario03 --resource-group $rg --template-file $file
 ```
 
