@@ -3,7 +3,8 @@
 #az account set -s $sub
 
 $rg = "agw-demo-04-rg"
-$file = "scenario-04.bicep"
+# for demo purposes
+$file = "scenario-04-demo.bicep"
 $webshopName = "webshop-agw-demo-04"
 $webappName = "app-agw-demo-04"
 
@@ -12,3 +13,6 @@ az deployment group create --name Scenario04 --resource-group $rg --template-fil
 
 az webapp deploy --resource-group $rg --name $webshopName --src-path '../.deployables/eShopOnWeb.zip' --type zip
 az webapp deploy --resource-group $rg --name $webappName --src-path '../.deployables/AspNetCoreApp.zip' --type zip
+
+az webapp deploy --resource-group $rg --name "$($webshopName)-plain" --src-path '../.deployables/eShopOnWeb.zip' --type zip
+az webapp deploy --resource-group $rg --name "$($webappName)-plain" --src-path '../.deployables/AspNetCoreApp.zip' --type zip

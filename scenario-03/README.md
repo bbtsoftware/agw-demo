@@ -40,7 +40,7 @@ az group create -n $rg -l northeurope
 az deployment group create --name Scenario03 --resource-group $rg --template-file $file
 ```
 
-* The url of the AGW (for north europe): https://agw-demo-03.northeurope.cloudapp.azure.com
+* The url of the AGW (for north europe): http://agw-demo-03.northeurope.cloudapp.azure.com
 
 ## Cleanup
 
