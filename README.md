@@ -1,3 +1,7 @@
+> [!IMPORTANT]
+> This repository has been archived and is no longer actively maintained.
+> No further updates or support are planned.
+
 # Azure Application Gateway Demo
 
 A demo project displaying the posibilities of the Azure Applicaton Gateway.
